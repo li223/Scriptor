@@ -5,21 +5,25 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.tsx'
 import CommandLibrary from './CommandLibrary/CommandLibrary';
 import Users from './Users/Users';
+import PageError from './Components/PageError';
 
 import './index.css'
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App />
+        element: <App />,
+        errorElement: <PageError /> 
     },
     {
         path: "/commandlibrary",
-        element: <CommandLibrary />
+        element: <CommandLibrary />,
+        errorElement: <PageError /> 
     },
     {
         path: "/users",
-        element: <Users />
+        element: <Users />,
+        errorElement: <PageError />
     }
 ]);
 

@@ -1,11 +1,10 @@
 import './App.css';
-import Layout from './Layout';
-import Button from '@mui/material/Button';
+import Layout from './Components/Layout';
 
 function App() {
     return (
         <Layout>
-            <Button variant="contained">This is a test</Button>
+            <p>Run Command</p>
         </Layout>
     );
 }

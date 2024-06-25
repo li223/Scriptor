@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, CssBaseline } from "@mui/material";
-import { Book as BookIcon, Terminal as TerminalIcon, Person as PersonIcon } from '@mui/icons-material';
+import { Book as BookIcon, Terminal as TerminalIcon, Person as PersonIcon, Settings as SettingsIcon } from '@mui/icons-material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-//import { BrowserRouter, Routes } from 'react-router-dom';
+import UserIcon from './UserIcon';
 
 interface Props {
     children: React.ReactNode;
@@ -14,7 +14,7 @@ const darkTheme = createTheme({
     },
 });
 
-const Layout: FC<Props>  = ({ children }) => {
+const Layout: FC<Props> = ({ children }) => {
     return (
         <ThemeProvider theme={darkTheme}>
             <div>
@@ -22,7 +22,9 @@ const Layout: FC<Props>  = ({ children }) => {
                     justifyContent: 'center',
                     margin: 'auto'
                 }}>
-                    <List>
+                    <List sx={{
+                        height: "100%"
+                    }}>
                         <ListItem>
                             <ListItemButton href="/">
                                 <ListItemIcon><TerminalIcon /></ListItemIcon>
@@ -43,7 +45,15 @@ const Layout: FC<Props>  = ({ children }) => {
                                 <ListItemText primary="Users" />
                             </ListItemButton>
                         </ListItem>
+
+                        <ListItem>
+                            <ListItemButton href="/settings">
+                                <ListItemIcon><SettingsIcon /></ListItemIcon>
+                                <ListItemText primary="Settings" />
+                            </ListItemButton>
+                        </ListItem>
                     </List>
+                    <UserIcon />
                 </Drawer>
             </div>
             <CssBaseline />
