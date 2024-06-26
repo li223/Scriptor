@@ -1,10 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import App from '../App.tsx'
-import CommandLibrary from '../Pages/CommandLibrary/CommandLibrary';
-import Users from '../Pages/Users/Users';
-import Servers from '../Pages/Servers/Servers'
-import PageError from '../Components/PageError';
+import { PageError, CommandLibrary, Users, Servers } from '../Pages/PageExports'
 
 const PageRouter = createBrowserRouter([
     {
