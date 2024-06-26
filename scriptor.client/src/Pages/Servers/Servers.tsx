@@ -1,9 +1,17 @@
-import Layout from '../../Components/Layout';
-//import { client } from '../../RestClient/RestClient'
 import { useState, useEffect } from 'react';
-import ServerDataTable from './Components/ServerDataTable';
+import { GridColDef } from '@mui/x-data-grid';
+
+import Layout from '../../Components/Layout';
+import ServerDataTable from '../../Components/DataTable';
+
 import { client } from '../../RestClient/RestClient';
 import Server from '../../RestClient/Interfaces/Server'
+
+const columns: GridColDef[] = [
+    { field: 'id', headerName: 'ID' },
+    { field: 'name', headerName: 'Name' },
+    { field: 'url', headerName: 'URL' }
+];
 
 function Servers() {
 
@@ -20,7 +28,7 @@ function Servers() {
 
     return (
         <Layout>
-            <ServerDataTable rows={servers} title="Servers" />
+            <ServerDataTable columns={columns} rows={servers} title="Servers" />
         </Layout>
     )
 }

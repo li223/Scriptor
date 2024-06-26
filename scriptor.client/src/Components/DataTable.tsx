@@ -1,12 +1,12 @@
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
-const columns: GridColDef[] = [
-    { field: 'id', headerName: 'ID' },
-    { field: 'name', headerName: 'Name' },
-    { field: 'url', headerName: 'URL' }
-];
+interface DataTableProps {
+    columns: GridColDef[];
+    rows: Array<any>;
+    title: String;
+}
 
-export default function ServerDataTable(props: any) {
+export default function DataTable(props: DataTableProps) {
     return (
         <div
             style={{
@@ -22,7 +22,7 @@ export default function ServerDataTable(props: any) {
                 }}
                 autoHeight
                 rows={props.rows}
-                columns={columns}
+                columns={props.columns}
                 initialState={{
                     pagination: {
                         paginationModel: { page: 0, pageSize: 5 },
