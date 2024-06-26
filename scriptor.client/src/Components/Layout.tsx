@@ -1,27 +1,32 @@
 import React, { FC } from 'react';
-import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, CssBaseline } from "@mui/material";
-import { Book as BookIcon, Terminal as TerminalIcon, Person as PersonIcon, Settings as SettingsIcon } from '@mui/icons-material';
+import { Divider, Box, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, CssBaseline, Avatar } from "@mui/material";
+import { Book as BookIcon, Terminal as TerminalIcon, Person as PersonIcon, Storage as ServerIcon } from '@mui/icons-material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import UserIcon from './UserIcon';
 
 interface Props {
     children: React.ReactNode;
 }
 
-const darkTheme = createTheme({
-    palette: {
-        mode: 'dark',
-    },
-});
+const drawerWidth = 250;
 
 const Layout: FC<Props> = ({ children }) => {
     return (
-        <ThemeProvider theme={darkTheme}>
-            <div>
-                <Drawer variant="permanent" sx={{
-                    justifyContent: 'center',
-                    margin: 'auto'
-                }}>
+        <ThemeProvider theme={createTheme({
+            palette: {
+                mode: 'dark',
+            }
+        })}>
+            <Box sx={{ display: "flex", marginLeft: "-90px" }}>
+                <CssBaseline />
+                <Drawer
+                    sx={{
+                        width: drawerWidth,
+                        flexShrink: 0
+                    }}
+                    variant="permanent"
+                    anchor="left">
+                    <h2>Scriptor</h2>
+                    <Divider />
                     <List sx={{
                         height: "100%"
                     }}>
@@ -47,20 +52,33 @@ const Layout: FC<Props> = ({ children }) => {
                         </ListItem>
 
                         <ListItem>
-                            <ListItemButton href="/settings">
-                                <ListItemIcon><SettingsIcon /></ListItemIcon>
-                                <ListItemText primary="Settings" />
+                            <ListItemButton href="/servers">
+                                <ListItemIcon><ServerIcon /></ListItemIcon>
+                                <ListItemText primary="Servers" />
                             </ListItemButton>
                         </ListItem>
                     </List>
-                    <UserIcon />
+                    <Avatar
+                        src="https://avatars.githubusercontent.com/u/27295070?v=4"
+                        alt="Icon"
+                        sx={{
+                            height: 100,
+                            width: 100,
+                            display: "block",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            marginBottom: 3
+                        }}
+                    />
                 </Drawer>
-            </div>
-            <CssBaseline />
-            <div>
-                {children}
-            </div>
-        </ThemeProvider>
+                <Box
+                    component="main"
+                    sx={{ flexGrow: 1, padding: 3 }}
+                >
+                    {children}
+                </Box>
+            </Box>
+        </ThemeProvider >
     );
 }
 

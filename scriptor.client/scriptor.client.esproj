@@ -9,6 +9,7 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\CommandLibrary\" />
+    <Folder Include="src\Pages\CommandLibrary\" />
+    <Folder Include="src\RestClient\Interfaces\" />
   </ItemGroup>
 </Project>
